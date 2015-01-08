@@ -1,0 +1,203 @@
+<html>
+<head>
+   
+    <title>UserRegistration</title>
+<div id="top ">
+
+<a href=HomePage.html target=_self>HOME</a>
+</div>
+   
+
+    <script language="javascript">
+
+        function verify() {
+        	
+        	var1=/[0-9]/;
+         	var2=/[a-z]/;
+         	var3=/[A-Z]/;
+         	
+         		
+     	var uName= document.forms["form2"]["userName"].value;
+        var password= document.forms["form2"]["password"].value;
+		var mobilenum= document.forms["form2"]["mobilenum"].value;
+		var city= document.forms["form2"]["city"].value;
+		var bankName= document.forms["form2"]["bank"].value;		
+		var accountnum= document.forms["form2"]["accountnum"].value;
+		
+                 if (uName == "") {
+                     alert("Please give the name");
+                     return false;
+                 }
+                 
+             	if(var1.test(uName)){
+             		alert("Error: User Name should contain only alphabets.");
+             		return false;
+             	}                 
+
+                 if (password == "") {
+                     alert("Enter the password ");
+                     return false;
+                 }
+                 if (password.length<8) {
+                     alert("Password should contain minimum 8 characters ");
+                     return false;
+                 }
+
+                 if (mobilenum == "") {
+                     alert("Please enter mobile number");
+                     document.form2.mobilenum.focus();
+                     return false;
+                 }
+
+				if(isNaN(mobilenum)){
+             		alert("Error: Mobile number should contain only numbers.");
+             		return false;
+             	}  
+                 
+                if (mobilenum.length!=10) {
+                     alert("Enter mobile number properly");
+                     document.form2.mobilenum.focus();
+                     return false;
+                 }
+
+
+                 if (city == "") {
+                     alert("Please give city");
+                     document.form2.city.focus();
+                     return false;
+                 }
+
+			if(var1.test(city)){
+             		alert("Error:City Name should contain only alphabets.");
+ 			document.form2.city.focus();
+             		return false;
+             	}   
+
+			if(document.form1.bank.selectedIndex==0){
+			 alert("Please select your Bank");
+			 document.form2.bank.focus();
+			 return false;
+		}
+
+		 if (accountnum == "") {
+                     alert("Please Enter your Account Number");
+                     document.form2.accountnum.focus();
+                     return false;
+                 }
+		 
+		if(isNaN(accountnum)){
+             		alert("Error:Account number should contain only numbers.");
+             		return false;
+             	}  
+		if (accountnum.length>10) {
+            alert("Please Enter ac no properly");
+            document.form2.accountnum.focus();
+            return false;
+        }
+
+		if(document.form1.membership.selectedIndex=="0"){
+			 alert("Please select your membership");
+			 return false;
+		}
+
+                 
+                 return true ;
+        }
+    </script>
+
+</head>
+<body background="img22.jpg">
+
+<h2 align="center"><i> User Registration Form</i></h1>
+
+<form method="POST" action="UserRegistrationController" name="form2">
+
+    <table  align="center" >
+
+        <tr>
+            
+     
+            <td><strong>UserName:</strong></td>
+            <td>
+                <input type="text" name="userName"/>
+            </td>
+        </tr>
+        
+        <tr>
+        <td><strong>Password:</strong></td>
+        <td>
+            <input type="password" name="password"/>
+        </td>
+        </tr>
+
+        <tr>
+            <td><strong>Mobile Number:</strong></td>
+            <td>
+                <input type="text" name="mobilenum" />
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>City:</strong></td>
+            <td>
+              <input type="text" name="city" />
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Bank Name:</strong></td>
+            <td>
+                <select name="bank"/>
+                <option value="SELECT"/>
+                SELECT
+                <option value="ICICI"/>
+                ICICI
+                <option value="HDFC"/>
+                HDFC
+                <option value="Kotak"/>
+                Kotak
+                <option value="CitiBank"/>
+                CitiBank
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>AccountNumber:</strong></td>
+            <td>
+                <input type="text" name="accountnum"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>MemberShip:</strong></td>
+            <td>
+                <select name="membership"/>
+                <option value="SELECT"/>
+                SELECT
+                <option value="PAID"/>
+                PAID
+                <option value="FREE"/>
+                FREE
+            </td>
+        </tr>
+        <tr> <td><strong>Amount</strong></td>
+            <td>
+                <input type="text" name="amount"/>
+            </td></tr>
+
+        <tr align="center">
+
+            <td>
+                
+                <input type="submit" value="Submit" onClick="return (verify())" ;/>
+            </td>
+
+            <td>
+                <input type="reset">
+            </td>
+        </tr>	
+    </table>
+</form>
+</body>
+</html>
